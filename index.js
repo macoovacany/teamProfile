@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const { Employee } = require('./lib/Employee.js')
+const { Manager } = require('./lib/Employee.js')
 
 
 
@@ -13,12 +13,19 @@ const { Employee } = require('./lib/Employee.js')
 
 
 // business logic is one manager, followed by anyn number of interns and engineers;
+team = [];
 
+// get the manager first
+questions = new Manager().getQuestions();
 
+console.log(questions);
 
 
 inquirer
-    .prompt(new Employee().getQuestions())
+    .prompt(questions)
     .then((answers) => {
-        console.log(answers);
+
+        team = [new Manager(answers.name, answers.id, answers.email, answers.officeNo)]
     });
+
+console.log(team);
