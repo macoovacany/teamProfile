@@ -6,7 +6,9 @@ const { writeFile } = require('fs');
 
 const main = async () => {
     try {
-        const team = new Team('The A Team');
+        const team = new Team();
+
+        await team.queryTeamName();
         // all the calls to the methods in the team class
         // go through inquirer; so we have to await the results
         //  otherwise we get overlapping queries
