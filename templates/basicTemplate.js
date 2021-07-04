@@ -39,9 +39,11 @@ const jumbotronTeamName = (teamName) => {
 // 
 const employeeCard = (emp) => {
 
+
+  // console.log(emp)
   //  destructure the specific employee object
   const { name, id, glyph, email, role, ...restProps } = emp;  
-console.log(emp);
+
   // render out the specifc properties for the employee 
   renderSpecificProps = '';
   for (const property in restProps) {
