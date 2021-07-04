@@ -8,6 +8,8 @@ The team profiler is a Node.js command-line application that takes in informatio
 ## Walkthrough
 
  * [Walkthrough of team profiler useage](https://drive.google.com/file/d/1hkmpRSpACxW6OVlRZevQMw0VCdHKpbfu/view)
+ * 
+ * [Example of website generated](https://macoovacany.github.io/teamProfile/)
 
   
 
