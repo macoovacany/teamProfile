@@ -4,32 +4,27 @@ const isObject = (o) => { typeof o === 'object' && o !== null }
 
 describe("Employee", () => {
 
-    it("The questions associated with an employee should be undefined when first initialised", () => {
+    // default getter values
+    it("A new employee should be initialised with default values", () => {
         const E = new Employee();
-        expect(E.getQuestions()).toEqual(undefined);
+        expect(E.getName()).toEqual('');
+        expect(E.getId()).toEqual('');
+        expect(E.getEmail()).toEqual('default@default.org');
+        expect(E.getRole()).toEqual('Employee');
     });
 
-    it("The text of the questions should be updated with setQuestions", () => {
-        const E = new Employee();
-        let name = 'Employee';
-        E.setQuestions(name);
-        let q = E.getQuestions();
+        // specialised for constructed Employee
+        it("A new employee should be initialised with default values", () => {
+            const E = new Employee({name:'some name', id: '12345', glyph:'', email: 'another@email.com', role: 'Contractor'});
+            expect(E.getName()).toEqual('some name');
+            expect(E.getId()).toEqual('12345');
+            expect(E.getEmail()).toEqual('another@email.com');
+            expect(E.getRole()).toEqual('Contractor');
+        });
+    
 
-        // expect an array
-        expect(Array.isArray(q)).toEqual(true);
-        // of objects
-        expect(typeof q[0]).toEqual('object');
-        // where the text of the message fields have been updated with the 'name' 
-        expect(q[0].message.includes(name)).toEqual(true);
 
-        // And now check that update works' 
-        name = 'Updated';
-        E.setQuestions(name)
-        q = E.getQuestions();
-        console.log(q)
-        // message contains the updated name
-        expect(q[0].message.includes(name)).toEqual(true);
 
-    });
 
 });
+

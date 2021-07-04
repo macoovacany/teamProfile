@@ -8,8 +8,15 @@ const preamble = `<!DOCTYPE html>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+  <style>
+.thumbnail{ border-radius:2rem;}
+
+  </style>
   <title>Team Details</title>
   </head>
   <body>`;
@@ -32,11 +39,8 @@ const jumbotronTeamName = (teamName) => {
 // 
 const employeeCard = (emp) => {
 
-  const { name, id, glyph, email, ...restProps } = emp;
-
   //  destructure the specific employee object
-  const role = emp.toString();
-  console.log('role: ' + JSON.stringify(role) +'\ntypeof role: ' + typeof role )
+  const { name, id, glyph, email, role, ...restProps } = emp;  
 
   // render out the specifc properties for the employee 
   renderSpecificProps = '';
@@ -45,19 +49,19 @@ const employeeCard = (emp) => {
     renderSpecificProps = renderSpecificProps + rp + '\n';
   }
 
-  return `<div class="row">
+  return `
   <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
+    <div class="thumbnail rounded">
       <div class="caption">
-        <h3 data-employee-property="name">${name}</h3>
-        <p data-employee-property="role">  ${role} </p>
+        <h3 data-employee-property="name"><b>${name} </b></h3>
+        <hr />
+        <p data-employee-property="role"> ${glyph} ${role} </p>
         <p data-employee-property="id">Employee ID: ${id}</p>
         <p data-employee-property="email">Employee email: ${email}</p>
         ${renderSpecificProps}
       </div>
     </div>
-  </div>
-</div>`
+  </div>`
 }
 
 
@@ -81,7 +85,9 @@ class basicTemplate {
     });
     
     this.reportHTML = preamble + 
+    `<div class="row">` +
       content +
+      `</div>`
       postamble;
   }
 }

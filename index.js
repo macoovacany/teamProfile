@@ -1,7 +1,7 @@
 const Team = require('./lib/Team');
 const basicTemplate = require('./templates/basicTemplate');
 
-const  { writeFile } = require('fs');
+const { writeFile } = require('fs');
 
 
 const main = async () => {
@@ -20,10 +20,10 @@ const main = async () => {
         const theATeamReport = new basicTemplate(team);
 
         const data = new Uint8Array(Buffer.from(theATeamReport.reportHTML));
-        
+
         writeFile(`./dist/${team.teamName}.html`, data, (err) => {
-          if (err) throw err;
-          console.log('The file has been saved!');
+            if (err) throw err;
+            console.log('The file has been saved!');
         });
 
     } catch (err) {
